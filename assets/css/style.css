@@ -1,0 +1,72 @@
+#pageWrap {
+    background-image: url('../images/background.jpeg');
+    position: relative;
+    min-width: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#overlay {
+        background-color: rgba(255, 255, 255, 0.68);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+}
+
+#title {
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    position: relative;
+    z-index: 5;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#instructions, 
+#timer, 
+#question, 
+#answers {
+    font-family: 'Heebo', sans-serif;
+    background: white;
+    text-align: center;
+    width: 75vw;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    z-index: 10;
+    line-height: 2rem;
+}
+
+#instructions, 
+#timer {
+    top: 50px;
+}
+
+#question {
+    top: 75px;
+}
+
+#answers {
+    top: 105px;
+}
+
+#start {
+    position: relative;
+    top: 40px;
+    text-align: center;
+    display: inherit;
+    width: 200px;
+    margin: 0 auto;
+    font-family: 'Heebo', sans-serif;
+    color: white;
+    background: steelblue;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    padding: 20px;
+    border-radius: 25px;
+    z-index: 10;
+}

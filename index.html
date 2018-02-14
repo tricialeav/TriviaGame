@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div id="title">
+        <h1 id="titleText">Trivia Game</h1>
+    </div>
+
+    <div id="pageWrap">
+        <div id="overlay"></div>
+
+        <p id="instructions">
+            Instructions:
+            <br>
+            <br>You will be presented with a series of trivia questions, each with four possible answers.
+            <br>Click on an answer to make your selection.
+            <br>You will be given up to ten seconds to answer a question before moving on to the next.
+        </p>
+
+        <button id="start">Play Game</button>
+
+        <h3 id="timer"></h3>
+        <h3 id="question">Question</h3>
+
+        <div id="answers">
+            <h4 id="answer1" class="answerText">1</h4>
+            <h4 id="answer2" class="answerText">2</h4>
+            <h4 id="answer3" class="answerText">3</h4>
+            <h4 id="answer4" class="answerText">4</h4>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- js file -->
+
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+
+<footer></footer>
+
+</html>
