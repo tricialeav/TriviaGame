@@ -70,3 +70,20 @@
     border-radius: 25px;
     z-index: 10;
 }
+
+#answer1, 
+#answer2, 
+#answer3, 
+#answer4 {
+    position: relative;
+    text-align: center;
+    min-width: 200px;
+    margin: 5px auto;
+    font-family: 'Heebo', sans-serif;
+    color: white;
+    background: steelblue;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    padding: 15px;
+    border-radius: 25px;
+    z-index: 10;
+}
