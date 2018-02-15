@@ -100,6 +100,7 @@ $(document).ready(function() {
 
   // Remove Instructions on button click
   $("#start").on("click", function() {
+    $('#start').off('click');
     $("#start").hide();
     $("#instructions").hide();
     startTrivia();
@@ -120,17 +121,44 @@ function startTrivia() {
 // Timer functions
 
 function run() {
-  $("#title").text("Question " + questionNumber);
-  console.log("[LOG] DO RUN");
-  counter = 10;
-  timerDiv.text("Time: " + counter);
-  intervalId = setInterval(decrement, 1000);
-  a.css("background", "");
-  b.css("background", "");
-  c.css("background", "");
-  d.css("background", "");
-  clickOff();
-  questionCycle();
+  if (triviaCards.length >= questionNumber) {
+    $("#title").text("Question " + questionNumber);
+    console.log("[LOG] DO RUN");
+    counter = 10;
+    timerDiv.text("Time: " + counter);
+    intervalId = setInterval(decrement, 1000);
+    a.css("background", "");
+    b.css("background", "");
+    c.css("background", "");
+    d.css("background", "");
+    clickOff();
+    questionCycle();
+  } else {
+    console.log("[LOG] GAME OVER");
+    timerDiv.hide();
+    $("#title").show();
+    $("#title").text("Game Over!");
+    $("#instructions").html(
+        "<p>Answers Correct: " +
+          correct +
+          "<br>" +
+          " Answers Incorrect: " +
+          incorrect
+      );
+    $("#instructions").show();
+    questionDiv.hide();
+    answerDiv.hide();
+    $("#start").text("Play Again?");
+    $("#start").show();
+    $("#start").on("click", function() {
+      $("#start").hide();
+      $("#instructions").hide();
+      $('#start').off('click');
+      stop();
+      reset();
+      startTrivia();
+    });
+  }
 }
 
 function decrement() {
@@ -139,6 +167,8 @@ function decrement() {
   if (counter === 0) {
     console.log("done");
     timerDiv.css("background", "red");
+    incorrect++;
+    console.log("[LOG] TIME OUT. INCORRECT: " + incorrect);
     stop();
     upCount();
   }
@@ -152,80 +182,76 @@ function stop() {
 
 function questionCycle() {
   console.log("[LOG] QUESTION CYCLE");
-  if (triviaCards.length > cardCounter && counter > 0) {
-    timerDiv.css("background", "");
-    questionDiv.text(triviaCards[cardCounter].q);
-    a.text(triviaCards[cardCounter].a);
-    a.on("click", function() {
-      stop();
-      clickOff();
-      console.log("a");
-      if (answersList[answersCounter] === "a") {
-        console.log("[LOG] CORRECT");
-        correct++;
-        a.css("background-color", "green");
-        upCount();
-      } else {
-        console.log("[LOG] INCORRECT");
-        incorrect++;
-        a.css("background-color", "red");
-        upCount();
-      }
-    });
-    b.text(triviaCards[cardCounter].b);
-    b.on("click", function() {
-      stop();
-      clickOff();
-      console.log("b");
-      if (answersList[answersCounter] === "b") {
-        console.log("[LOG] CORRECT");
-        correct++;
-        b.css("background-color", "green");
-        upCount();
-      } else {
-        console.log("[LOG] INCORRECT");
-        incorrect++;
-        b.css("background-color", "red");
-        upCount();
-      }
-    });
-    c.text(triviaCards[cardCounter].c);
-    c.on("click", function() {
-      stop();
-      clickOff();
-      console.log("c");
-      if (answersList[answersCounter] === "c") {
-        console.log("[LOG] CORRECT");
-        correct++;
-        c.css("background-color", "green");
-        upCount();
-      } else {
-        console.log("[LOG] INCORRECT");
-        incorrect++;
-        c.css("background-color", "red");
-        upCount();
-      }
-    });
-    d.text(triviaCards[cardCounter].d);
-    d.on("click", function() {
-      stop();
-      clickOff();
-      console.log("d");
-      if (answersList[answersCounter] === "d") {
-        console.log("[LOG] CORRECT");
-        correct++;
-        d.css("background-color", "green");
-        upCount();
-      } else {
-        console.log("[LOG] INCORRECT");
-        incorrect++;
-        d.css("background-color", "red");
-        upCount();
-      }
-    });
-  } else {
-    console.log("game over");
-  }
+  timerDiv.css("background", "");
+  questionDiv.text(triviaCards[cardCounter].q);
+  a.text(triviaCards[cardCounter].a);
+  a.on("click", function() {
+    stop();
+    clickOff();
+    console.log("a");
+    if (answersList[answersCounter] === "a") {
+      console.log("[LOG] CORRECT");
+      correct++;
+      a.css("background-color", "green");
+      upCount();
+    } else {
+      console.log("[LOG] INCORRECT");
+      incorrect++;
+      a.css("background-color", "red");
+      upCount();
+    }
+  });
+  b.text(triviaCards[cardCounter].b);
+  b.on("click", function() {
+    stop();
+    clickOff();
+    console.log("b");
+    if (answersList[answersCounter] === "b") {
+      console.log("[LOG] CORRECT");
+      correct++;
+      b.css("background-color", "green");
+      upCount();
+    } else {
+      console.log("[LOG] INCORRECT");
+      incorrect++;
+      b.css("background-color", "red");
+      upCount();
+    }
+  });
+  c.text(triviaCards[cardCounter].c);
+  c.on("click", function() {
+    stop();
+    clickOff();
+    console.log("c");
+    if (answersList[answersCounter] === "c") {
+      console.log("[LOG] CORRECT");
+      correct++;
+      c.css("background-color", "green");
+      upCount();
+    } else {
+      console.log("[LOG] INCORRECT");
+      incorrect++;
+      c.css("background-color", "red");
+      upCount();
+    }
+  });
+  d.text(triviaCards[cardCounter].d);
+  d.on("click", function() {
+    stop();
+    clickOff();
+    console.log("d");
+    if (answersList[answersCounter] === "d") {
+      console.log("[LOG] CORRECT");
+      correct++;
+      d.css("background-color", "green");
+      upCount();
+    } else {
+      console.log("[LOG] INCORRECT");
+      incorrect++;
+      d.css("background-color", "red");
+      upCount();
+    }
+  });
 }
 
 function clickOff() {
@@ -250,4 +276,13 @@ function upCount() {
   );
   if (runTimer) clearTimeout(runTimer);
   runTimer = setTimeout(run, 2000);
+}
+
+function reset() {
+  correct = 0;
+  incorrect = 0;
+  questionNumber = 1;
+  counter = 10;
+  cardCounter = 0;
+  answersCounter = 0;
 }
