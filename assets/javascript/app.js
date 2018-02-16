@@ -22,7 +22,7 @@ let triviaCards = [
   },
   {
     q:
-      "As a protest to Hollywood's portrayal of Native Americans in film, Marlon Brando declined an Academy Award for his performance in what movie?",
+      "As a protest to Hollywood's portrayal of Native Americans in film, Marlon Brando declined an Academy Award in 1973 for his performance in what movie?",
     a: "The Godfather",
     b: "A Streetcar Named Desire",
     c: "Apocalypse Now",
