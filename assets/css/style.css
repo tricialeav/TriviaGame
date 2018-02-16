@@ -29,7 +29,6 @@
   width: 100vw;
 }
 
-
 #instructions,
 #timer,
 #question,
@@ -90,4 +89,54 @@
   padding: 15px;
   border-radius: 25px;
   z-index: 10;
+  outline: 0;
+}
+
+@media screen and (min-width: 810px) {
+  #title {
+    font-size: 2rem;
+    padding: 15px;
+  }
+
+  #instructions,
+  #timer,
+  #question,
+  #answers {
+    font-size: 1.3rem;
+    width: 80vw;
+  }
+
+  #start {
+    font-size: 1rem;
+    top: 71px;
+  }
+
+  #instructions,
+  #question,
+  #timer,
+  #answers {
+    max-width: 650px;
+    max-height: 300px;
+  }
+
+  #answer1,
+  #answer2,
+  #answer3,
+  #answer4 {
+    display: block;
+    font-size: 1rem;
+    min-width: 250px;
+  }
+
+  #answer1,
+  #answer3 {
+    left: -142px;
+    top: 26px;
+  }
+
+  #answer2,
+  #answer4 {
+    right: -142px;
+    top: -35px;
+  }
 }

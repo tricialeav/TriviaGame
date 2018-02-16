@@ -137,11 +137,11 @@ function run() {
     console.log("[LOG] GAME OVER");
     timerDiv.hide();
     $("#title").show();
-    $("#title").text("Game Over!");
+    $("#title").text("Thanks for Playing!");
     $("#instructions").html(
         "<p>Answers Correct: " +
           correct +
-          "<br>" +
+          "<br><br>" +
           " Answers Incorrect: " +
           incorrect
       );
@@ -170,6 +170,7 @@ function decrement() {
     incorrect++;
     console.log("[LOG] TIME OUT. INCORRECT: " + incorrect);
     stop();
+    showRight();
     upCount();
   }
 }
@@ -198,6 +199,7 @@ function questionCycle() {
       console.log("[LOG] INCORRECT");
       incorrect++;
       a.css("background-color", "red");
+      showRight();
       upCount();
     }
   });
@@ -215,6 +217,7 @@ function questionCycle() {
       console.log("[LOG] INCORRECT");
       incorrect++;
       b.css("background-color", "red");
+      showRight();
       upCount();
     }
   });
@@ -232,6 +235,7 @@ function questionCycle() {
       console.log("[LOG] INCORRECT");
       incorrect++;
       c.css("background-color", "red");
+      showRight();
       upCount();
     }
   });
@@ -249,9 +253,24 @@ function questionCycle() {
       console.log("[LOG] INCORRECT");
       incorrect++;
       d.css("background-color", "red");
+      showRight();
       upCount();
     }
   });
+}
+
+function showRight() {
+  for (let i = 0; i < 4; i ++) {
+    if (answersList[answersCounter] === "a") {
+        a.css("background-color", "green");
+    } else if (answersList[answersCounter] === "b") {
+        b.css("background-color", "green");
+    } else if (answersList[answersCounter] === "c") {
+        c.css("background-color", "green");
+    } else if (answersList[answersCounter] === "d") {
+        d.css("background-color", "green");
+    }
+  }
 }
 
 function clickOff() {
